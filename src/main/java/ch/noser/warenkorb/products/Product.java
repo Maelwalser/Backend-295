@@ -1,6 +1,7 @@
 package ch.noser.warenkorb.products;
 
 
+import ch.noser.warenkorb.warenkorb.Warenkorb;
 import jakarta.persistence.*;
 
 @Entity
@@ -11,6 +12,13 @@ public class Product {
     private int id;
     @Column(name = "product_name")
     private String product_name;
+
+
+
+    @ManyToOne
+    @JoinColumn(name = "warenkorb_id")
+    private Warenkorb warenkorb;
+
 
 
     public int getId() {

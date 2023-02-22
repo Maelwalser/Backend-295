@@ -4,6 +4,7 @@ package ch.noser.warenkorb.user;
 import ch.noser.warenkorb.products.Product;
 import ch.noser.warenkorb.warenkorb.Warenkorb;
 import jakarta.persistence.*;
+import org.springframework.data.rest.core.annotation.RestResource;
 
 import java.util.List;
 
@@ -20,17 +21,10 @@ public class User {
     @Column(name = "lastname")
     private String lastname;
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne
+    @JoinColumn(name = "warenkorb_id")
+    @RestResource(path = "userWarenkorb", rel = "warenkorb")
     private Warenkorb warenkorb;
-
-
-    @OneToMany(mappedBy = "warenkorb")
-    private List<Product> products;
-
-
-
-
-
 
 
     public int getId() {
