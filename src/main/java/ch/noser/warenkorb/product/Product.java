@@ -1,4 +1,4 @@
-package ch.noser.warenkorb.products;
+package ch.noser.warenkorb.product;
 
 
 import ch.noser.warenkorb.warenkorb.Warenkorb;

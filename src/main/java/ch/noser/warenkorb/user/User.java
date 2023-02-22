@@ -1,30 +1,33 @@
 package ch.noser.warenkorb.user;
 
 
-import ch.noser.warenkorb.products.Product;
 import ch.noser.warenkorb.warenkorb.Warenkorb;
 import jakarta.persistence.*;
 import org.springframework.data.rest.core.annotation.RestResource;
-
-import java.util.List;
 
 @Entity
 @Table(name = "users")
 public class User {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    @Column(name = "firstname")
-    private String firstname;
 
 
-    @Column(name = "lastname")
-    private String lastname;
+    @Column(name = "username")
+    private String username;
 
-    @OneToOne
-    @JoinColumn(name = "warenkorb_id")
-    @RestResource(path = "userWarenkorb", rel = "warenkorb")
+
+    @Column(name = "password")
+    private String password;
+
+//    @OneToOne
+//    @JoinColumn(name = "warenkorb_id")
+//    @RestResource(path = "userWarenkorb", rel = "warenkorb")
+//    private Warenkorb warenkorb;
+
+    @OneToOne(mappedBy = "user")
     private Warenkorb warenkorb;
+
 
 
     public int getId() {
@@ -35,20 +38,21 @@ public class User {
         this.id = id;
     }
 
-    public String getFirstname() {
-        return firstname;
+
+    public String getUsername() {
+        return username;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getPassword() {
+        return password;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
 
