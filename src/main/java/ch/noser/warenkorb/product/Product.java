@@ -5,6 +5,7 @@ import ch.noser.warenkorb.warenkorb.Warenkorb;
 import jakarta.persistence.*;
 import org.hibernate.annotations.UuidGenerator;
 
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -19,9 +20,8 @@ public class Product {
 
 
 
-    @ManyToOne
-    @JoinColumn(name = "warenkorb_id")
-    private Warenkorb warenkorb;
+    @ManyToMany(mappedBy = "products")
+    private List<Warenkorb> warenkoerb;
     public UUID getId() {
         return id;
     }
@@ -29,13 +29,12 @@ public class Product {
     public void setId(UUID id) {
         this.id = id;
     }
-
-    public Warenkorb getWarenkorb() {
-        return warenkorb;
+    public List<Warenkorb> getWarenkoerb() {
+        return warenkoerb;
     }
 
-    public void setWarenkorb(Warenkorb warenkorb) {
-        this.warenkorb = warenkorb;
+    public void setWarenkoerb(List<Warenkorb> warenkoerb) {
+        this.warenkoerb = warenkoerb;
     }
 
 

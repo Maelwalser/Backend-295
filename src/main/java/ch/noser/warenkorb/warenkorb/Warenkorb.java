@@ -24,8 +24,14 @@ public class Warenkorb {
     @OneToOne(mappedBy = "warenkorb", cascade = CascadeType.ALL)
     private User user;
 
-    @OneToMany(mappedBy = "warenkorb")
-    private List<Product> products;
+
+    @ManyToMany
+    @JoinTable(
+            name = "warenkorb_products",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "warenkorb_id"))
+    List<Product> products;
+
 
     public UUID getId() {
         return id;

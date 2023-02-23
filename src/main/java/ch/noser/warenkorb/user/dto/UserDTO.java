@@ -1,5 +1,6 @@
 package ch.noser.warenkorb.user.dto;
 
+import ch.noser.warenkorb.warenkorb.Warenkorb;
 import ch.noser.warenkorb.warenkorb.dto.WarenkorbDTO;
 
 import java.util.UUID;
@@ -20,16 +21,6 @@ public class UserDTO {
             this.password = password;
         }
 
-
-        public static class WithCart extends  WithPassword{
-        private WarenkorbDTO warenkorb;
-        public WarenkorbDTO getWarenkorb() {
-        return warenkorb;
-    }
-        public void setWarenkorb(WarenkorbDTO warenkorb) {
-        this.warenkorb = warenkorb;
-    }
-        }
     }
     public UUID getId() {
         return id;

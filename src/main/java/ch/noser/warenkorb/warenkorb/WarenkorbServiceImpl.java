@@ -1,9 +1,12 @@
 package ch.noser.warenkorb.warenkorb;
 
 import ch.noser.warenkorb.product.Product;
+
+import ch.noser.warenkorb.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.UUID;
@@ -32,8 +35,11 @@ public class WarenkorbServiceImpl implements WarenkorbService{
 
     }
 
-//    @Override
-//    public Product getAllProducts() {
-//
-//    }
+    @Override
+    public List<Product> getAllProducts(User user) {
+        Warenkorb warenkorb = user.getWarenkorb();
+        return warenkorb.getProducts();
+    }
+
+
 }

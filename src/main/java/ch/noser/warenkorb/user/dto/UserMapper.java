@@ -8,8 +8,8 @@ import org.mapstruct.Mapper;
 )
 public interface UserMapper {
     UserDTO userMakeDTO(User user);
-    User userGetAllDTO(UserDTO.WithPassword.WithCart user);
 
     User userGetPasswordDTO(UserDTO.WithPassword user);
+    User userGetDTO(UserDTO userDTO);
 
 }

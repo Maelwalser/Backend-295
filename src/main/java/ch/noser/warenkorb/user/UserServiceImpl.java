@@ -3,6 +3,7 @@ package ch.noser.warenkorb.user;
 import ch.noser.warenkorb.product.Product;
 import ch.noser.warenkorb.warenkorb.Warenkorb;
 import ch.noser.warenkorb.warenkorb.WarenkorbRepository;
+import ch.noser.warenkorb.warenkorb.WarenkorbService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,8 +15,11 @@ import java.util.UUID;
 public class UserServiceImpl implements UserService{
     private UserRepository userRepository;
 
+
     @Override
     public User create(User user) {
+        Warenkorb warenkorb = new Warenkorb();
+        user.setWarenkorb(warenkorb);
         return userRepository.save(user);
     }
 

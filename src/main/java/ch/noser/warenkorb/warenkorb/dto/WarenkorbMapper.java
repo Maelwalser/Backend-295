@@ -8,4 +8,5 @@ import org.mapstruct.Mapper;
 )
 public interface WarenkorbMapper {
     WarenkorbDTO warenkorbMakeDTO(Warenkorb warenkorb);
+    Warenkorb warenkorbGetDTO(WarenkorbDTO warenkorbDTO);
 }
