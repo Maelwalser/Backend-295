@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class ProductServiceImpl implements ProductService{
@@ -27,7 +28,7 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public void deleteProductById(int id) {
+    public void deleteProductById(UUID id) {
         Optional<Product> optionalProduct = productRepository.findById(id);
         if(optionalProduct.isPresent()) {
             productRepository.deleteById(id);
@@ -36,7 +37,7 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public Product getProductById(int id) {
+    public Product getProductById(UUID id) {
         Optional<Product> optionalProduct = productRepository.findById(id);
         if(optionalProduct.isPresent()){
         return optionalProduct.get();
@@ -45,7 +46,7 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public Product updateProductById(int id, Product product) {
+    public Product updateProductById(UUID id, Product product) {
         Optional<Product> optionalProduct = productRepository.findById(id);
         if(optionalProduct.isPresent()){
             product.setId(optionalProduct.get().getId());

@@ -5,6 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
+
 @RestController
 @RequestMapping("warenkoerbe")
 public class WarenkorbController {
@@ -21,7 +23,7 @@ public class WarenkorbController {
     }
 
     @DeleteMapping({"{id}"})
-    public void deleteWarenkorbById(@PathVariable("id") int id){
+    public void deleteWarenkorbById(@PathVariable("id") UUID id){
         warenkorbService.deleteWarenkorbById(id);
     }
 }

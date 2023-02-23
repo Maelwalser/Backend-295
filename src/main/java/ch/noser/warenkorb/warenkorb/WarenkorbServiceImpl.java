@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.NoSuchElementException;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class WarenkorbServiceImpl implements WarenkorbService{
@@ -22,7 +23,7 @@ public class WarenkorbServiceImpl implements WarenkorbService{
     }
 
     @Override
-    public void deleteWarenkorbById(int id) {
+    public void deleteWarenkorbById(UUID id) {
         Optional<Warenkorb> warenkorbOptional = warenkorbRepository.findById(id);
         if(warenkorbOptional.isPresent()){
         warenkorbRepository.deleteById(id);

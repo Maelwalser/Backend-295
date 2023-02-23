@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.NoSuchElementException;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -25,7 +26,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public void deleteUserById(int id) {
+    public void deleteUserById(UUID id) {
         Optional<User> optionalUser = userRepository.findById(id);
         if(optionalUser.isPresent()){
         userRepository.deleteById(id);
@@ -34,7 +35,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public User updateUserById(int id, User user) {
+    public User updateUserById(UUID id, User user) {
         Optional<User> optionalUser = userRepository.findById(id);
         if(optionalUser.isPresent()) {
             user.setId(optionalUser.get().getId());

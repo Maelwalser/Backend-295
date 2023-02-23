@@ -3,14 +3,19 @@ package ch.noser.warenkorb.user;
 
 import ch.noser.warenkorb.warenkorb.Warenkorb;
 import jakarta.persistence.*;
+import org.hibernate.annotations.UuidGenerator;
 import org.springframework.data.rest.core.annotation.RestResource;
+
+import java.util.UUID;
 
 @Entity
 @Table(name = "users")
 public class User {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @GeneratedValue
+    @UuidGenerator
+    private UUID id;
 
 
     @Column(name = "username")
@@ -20,9 +25,8 @@ public class User {
     @Column(name = "password")
     private String password;
 
-
-
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
+    @RestResource(path = "userWarenkorb", rel = "warenkorb")
     private Warenkorb warenkorb;
 
 
@@ -35,15 +39,14 @@ public class User {
         this.warenkorb = warenkorb;
     }
 
-    public int getId() {
+
+    public UUID getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(UUID id) {
         this.id = id;
     }
-
-
     public String getUsername() {
         return username;
     }
