@@ -23,11 +23,15 @@ public class Warenkorb {
     private User user;
 
 
-//    @OneToOne(mappedBy = "warenkorb", cascade = CascadeType.ALL)
-//    private User user;
-
 
     @OneToMany(mappedBy = "warenkorb")
     private List<Product> products;
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

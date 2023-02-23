@@ -3,6 +3,7 @@ package ch.noser.warenkorb.user;
 import ch.noser.warenkorb.product.Product;
 import ch.noser.warenkorb.warenkorb.Warenkorb;
 import ch.noser.warenkorb.warenkorb.WarenkorbRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.NoSuchElementException;
@@ -15,6 +16,12 @@ public class UserServiceImpl implements UserService{
     @Override
     public User create(User user) {
         return userRepository.save(user);
+    }
+
+
+    @Autowired
+    public UserServiceImpl(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
     @Override

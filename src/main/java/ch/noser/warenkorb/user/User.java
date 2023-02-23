@@ -20,15 +20,20 @@ public class User {
     @Column(name = "password")
     private String password;
 
-//    @OneToOne
-//    @JoinColumn(name = "warenkorb_id")
-//    @RestResource(path = "userWarenkorb", rel = "warenkorb")
-//    private Warenkorb warenkorb;
 
-    @OneToOne(mappedBy = "user")
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Warenkorb warenkorb;
 
 
+
+    public Warenkorb getWarenkorb() {
+        return warenkorb;
+    }
+
+    public void setWarenkorb(Warenkorb warenkorb) {
+        this.warenkorb = warenkorb;
+    }
 
     public int getId() {
         return id;
